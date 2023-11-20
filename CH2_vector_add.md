@@ -117,7 +117,7 @@ the data we are trying to process. For example if we want to process a 2D 100x22
 of threads in each block, and is usually set to a multiple of 32 for hardware efficiency reasons.
 
 
-![imagename](https://ibb.co/MfDYbKx)  
+![imagename](https://ibb.co/MfDYbKx) . 
   
 
 CUDA kernels also have access to two or more built-in variables (threadIdx and blockIdx) that allow threads to distinguish themselves 
