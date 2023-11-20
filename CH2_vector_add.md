@@ -18,7 +18,7 @@ of threads which collectively make up a grid.
 
 ![imagename](https://nyu-cds.github.io/python-gpu/fig/01-cpugpuarch.png) . 
   
-  
+
 The image above illustrates how a GPU takes advantage of parallelization. While a CPU may have a couple of cores, lets say around 8-12 in the 
 case of the Intel Xeon Silver, an NVIDIA H200 Tensor Core GPU has 6912 cores. Using these cores we can launch a large number of threads and for 
 problems that lend themselves well to data parallelization we can see a signficant improvement in performance.
@@ -117,7 +117,9 @@ the data we are trying to process. For example if we want to process a 2D 100x22
 of threads in each block, and is usually set to a multiple of 32 for hardware efficiency reasons.
 
 
-![imagename] (https://ibb.co/MfDYbKx)
+![imagename] (https://ibb.co/MfDYbKx)  
+  
+
 CUDA kernels also have access to two or more built-in variables (threadIdx and blockIdx) that allow threads to distinguish themselves 
 from each other, and to determine the area of data each thread can work on. For example in the above picture the first thread in each block
 has threadIdx of 0, and all the threads in the first block have a blockIdx of 0.
