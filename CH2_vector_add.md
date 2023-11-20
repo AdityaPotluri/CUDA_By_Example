@@ -8,14 +8,17 @@ between our CPU(host) and GPU(device).
 
 
 ### Host-Device
-![imagename](https://avabodha.in/content/images/2021/07/image-29.png)
+![imagename](https://avabodha.in/content/images/2021/07/image-29.png) . 
+
 
 We start by looking into the basic structure of a CUDA C program, how does a host(CPU) and device(GPU) communicate with each other?
 Any CUDA-C program contains a mix of host-code and device code. Host-code is our traditional C program meant for execution on a CPU.
 Device code on the other hand has functions called kernels that are executed in a data-parallel manner. These kernels launch a large number 
 of threads which collectively make up a grid. 
 
-![imagename](https://nyu-cds.github.io/python-gpu/fig/01-cpugpuarch.png)
+![imagename](https://nyu-cds.github.io/python-gpu/fig/01-cpugpuarch.png) . 
+  
+  
 The image above illustrates how a GPU takes advantage of parallelization. While a CPU may have a couple of cores, lets say around 8-12 in the 
 case of the Intel Xeon Silver, an NVIDIA H200 Tensor Core GPU has 6912 cores. Using these cores we can launch a large number of threads and for 
 problems that lend themselves well to data parallelization we can see a signficant improvement in performance.
