@@ -27,24 +27,24 @@ We now return to the problem. If we have two vectors on our CPU that we would li
 How do we allocate and free memory on the device(GPU), and how do we transfer memory back and forth. We will start by writing a basic outline 
 to the program.
 
-void vecAdd(float* A, float* B, float* C, int n) {
-    int size = n * sizeof(float);
-    float *d_A, *d_B, *d_C;
+    void vecAdd(float* A, float* B, float* C, int n) {
+        int size = n * sizeof(float);
+        float *d_A, *d_B, *d_C;
 
-    // Part 1: Allocate device memory for A, B, and C then transferring from host to device
+        // Part 1: Allocate device memory for A, B, and C then transferring from host to device
     
 
-    // Part 2: Call Kernel - to launch a grid of threads on GPU
-    // perform actual vector addition
+        // Part 2: Call Kernel - to launch a grid of threads on GPU
+        // perform actual vector addition
 
 
-    // Part 3: Copy C from the device memory
-    // Free device memory
-}
+        // Part 3: Copy C from the device memory
+        // Free device memory
+    }
   
 
 
-#### Part 1 + 3 Allocating and Transferring memory for A,B, and C
+### Part 1 + 3 Allocating and Transferring memory for A,B, and C
 To do this we introduce **cudaMalloc()** and **cudaFree()**. cudaMalloc takes two arguements, the first of which is the address of a pointer 
 casted to a void pointer. When cudaMalloc returns the original pointer will be modified to point to a region of device memory that it has been 
 allocated to point to. The second arguement is the size in bytes of memory requested. cudaFree takes one argument, the pointer to your data.
@@ -103,7 +103,7 @@ With this function we can fill in Part 1 and 3 of our function.
     }
   
 
-  
+
 ### Part 2 Launching kernel function and threading
 To launch our threading functions, we have to understand how threads are organized in CUDA. When a program's host code calls 
 a kernel, the CUDA runtime system launches a grid of threads, these grids are an array of thread blocks all of the same size.
