@@ -130,6 +130,14 @@ a CUDA kernel function. This type of function is executed on the device and can 
 the default functions of C that we are used to, and __device__ functions also execute on the device but they differ from global functions since they can only be called
 by other device functions or the host.
 
+    __global__
+    void vecAddKernel(float* A, float* B, float*C, int n) {
+        int i = threadIsx.x + blockDim.x * blockIdx.x;
+        if (i < n) {
+            C[i] = A[i] + B[i];
+        }
+    }
+
 
 
 
