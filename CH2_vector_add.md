@@ -99,7 +99,16 @@ To launch our threading functions, we have to understand how threads are organiz
 a kernel, the CUDA runtime system launches a grid of threads, these grids are an array of thread blocks all of the same size.
 The thread blocks have a max size dependent on your hardware i.e 1024. To help us handle thread blocks CUDA gives us *blockDim*
 , a struct with three unsigned integer fields (x, y, and z). The dimensions of our *blockDim* generally match the dimensions of 
-the data we are trying to process. For example if 
+the data we are trying to process. For example if we want to process a 2D 100x220 image we would use just x and y set to 100 and 
+200 respectively. Alternatively a 3D render of 100x250x300 would have x = 100, y = 250, z = 300. The x value represents the amount
+of threads in each block, and is usually set to a multiple of 32 for hardware efficiency reasons.
+
+
+![imagename] (https://ibb.co/MfDYbKx)
+CUDA kernels also have access to two or more built-in variables (threadIdx and blockIdx) that allow threads to distinguish themselves 
+from each other, and to determine the area of data each thread can work on. For example in the above picture the first thread in each block
+has threadIdx of 0, and all the threads in the first block have a blockIdx of 0.
+
 
 
 

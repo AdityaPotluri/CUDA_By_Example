@@ -11,15 +11,22 @@ void vecAdd(float* A, float* B, float* C, int n) {
     cudaMalloc((void**)&d_B, size);
     cudaMalloc((void**)&d_C, size);
 
+    cudaMemcpy(d_A, A, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_B, B, size, cudaMemcpyHostToDevice);
+    cudaMemcpy(d_C, C, size, cudaMemcpyHostToDevice);
+
     // Part 2: Call Kernel - to launch a grid of threads on GPU
     // perform actual vector addition
 
 
     // Part 3: Copy C from the device memory
     // Free device memory
+    cudaMemcpy(C, d_C, size, cudaMemcpyDeviceToHost);
+
     cudaFree(d_A);
     cudaFree(d_B);
     cudaFree(d_C);
+
 
 }
 int main() {
