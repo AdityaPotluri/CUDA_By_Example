@@ -117,14 +117,18 @@ the data we are trying to process. For example if we want to process a 2D 100x22
 of threads in each block, and is usually set to a multiple of 32 for hardware efficiency reasons.
 
 
-![imagename](https://i.ibb.co/8bDWJGL/867294-DA-1-BBA-4-C69-9621-939987-D0-F41-C.jpg) . 
+![imagename](https://i.ibb.co/8bDWJGL/867294-DA-1-BBA-4-C69-9621-939987-D0-F41-C.jpg)
   
 
 CUDA kernels also have access to two or more built-in variables (threadIdx and blockIdx) that allow threads to distinguish themselves 
 from each other, and to determine the area of data each thread can work on. For example in the above picture the first thread in each block
 has threadIdx of 0, and all the threads in the first block have a blockIdx of 0.
-
-
+  
+![imagename](https://i.ibb.co/rkdw4tt/FEEFC6-C6-63-BF-4880-9198-EB0-F930752-C1-4-5005-c.jpg)
+The CUDA C language extends C with three qualifier keywords that can be used in function declarations __global__ which indicates that it is 
+a CUDA kernel function. This type of function is executed on the device and can be called from the host. The __host__ functions are essentially 
+the default functions of C that we are used to, and __device__ functions also execute on the device but they differ from global functions since they can only be called
+by other device functions or the host.
 
 
 
